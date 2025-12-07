@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Fullscreen</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+  }
+  video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: black;
+  }
+</style>
+</head>
+<body>
+
+<video id="player" controls autoplay playsinline webkit-playsinline>
+  متصفحك لا يدعم تشغيل الفيديو
+</video>
+
+<script>
+  const player = document.getElementById('player');
+  // قراءة اسم الفيديو من رابط الصفحة: ?v=filename.mp4
+  const params = new URLSearchParams(window.location.search);
+  const videoFile = params.get('v');
+
+  if(videoFile){
+    player.src = videoFile;
+  } else {
+    alert("⚠️ لم يتم تحديد الفيديو. استخدم الرابط هكذا:\nplayer.html?v=اسم_الفيديو.mp4");
+  }
+</script>
+
+</body>
+</html>
